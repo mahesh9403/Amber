@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Dr. Shalini Patodiya — Senior Dermatologist | Amber Skin &amp; Hair Clinics</title>
+  <meta name="description" content="Meet Dr. Shalini Patodiya — MD Dermatology, USFDA Certified, 17+ years experience. Senior Dermatologist &amp; Trichologist at Amber Skin &amp; Hair Clinics, Hyderabad." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── About Dr. Shalini page-specific styles ── */
+    .about-hero {
+      padding: calc(var(--nav-h) + 4rem) 0 5rem;
+      background: linear-gradient(135deg, var(--cream) 60%, #f0e8dc 100%);
+    }
+    .about-hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-hero-text .hero-tag {
+      display: inline-block;
+      background: rgba(200,152,106,.15);
+      color: var(--amber-deep);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      border-radius: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    .about-hero-text h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 1.1rem;
+    }
+    .about-hero-text .hero-sub {
+      font-size: 1.05rem;
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: 1.6rem;
+      max-width: 42ch;
+    }
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: 1.8rem;
+    }
+    .about-badge {
+      background: var(--white);
+      border: 1px solid rgba(200,152,106,.35);
+      color: var(--amber-deep);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: .3rem .85rem;
+      border-radius: 2rem;
+    }
+    .about-socials {
+      display: flex;
+      gap: .75rem;
+    }
+    .about-socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 1px solid rgba(200,152,106,.3);
+      border-radius: 50%;
+      color: var(--amber-deep);
+      transition: background .2s, color .2s;
+    }
+    .about-socials a:hover { background: var(--amber-primary); color: #fff; }
+    .about-hero-image {
+      display: flex;
+      justify-content: center;
+    }
+    .doctor-organic-frame {
+      position: relative;
+      width: min(420px, 100%);
+    }
+    .doctor-organic-frame::before {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      background: linear-gradient(135deg, rgba(200,152,106,.22), rgba(200,152,106,.06));
+      border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+      z-index: 0;
+    }
+    .doctor-organic-frame img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-radius: 55% 45% 50% 50% / 45% 50% 50% 55%;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+      box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    }
+
+    /* Credentials strip */
+    .credentials-strip {
+      background: var(--charcoal);
+      padding: 3rem 0;
+    }
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .credential-stat {
+      color: var(--white);
+    }
+    .credential-stat .stat-number {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      color: var(--amber-primary);
+      line-height: 1;
+      margin-bottom: .35rem;
+    }
+    .credential-stat .stat-label {
+      font-size: .85rem;
+      color: rgba(255,255,255,.65);
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* Philosophy section */
+    .philosophy-section {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .philosophy-text h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+    .philosophy-text p {
+      color: #555;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .philosophy-visual {
+      background: linear-gradient(135deg, var(--cream), #e8dbd0);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .philosophy-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .philosophy-point-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--amber-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    .philosophy-point-text strong {
+      display: block;
+      color: var(--charcoal);
+      font-weight: 600;
+      margin-bottom: .3rem;
+    }
+    .philosophy-point-text span {
+      font-size: .9rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Specializations */
+    .specializations-section {
+      padding: 6rem 0;
+      background: var(--cream);
+    }
+    .specializations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .spec-card {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(200,152,106,.2);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .spec-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(200,152,106,.18);
+    }
+    .spec-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--amber-primary), var(--amber-deep));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      color: #fff;
+    }
+    .spec-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      margin-bottom: .5rem;
+    }
+    .spec-card p {
+      font-size: .88rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* About reviews */
+    .about-reviews-section {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .about-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .about-review-card {
+      background: var(--cream);
+      border-radius: 1rem;
+      padding: 2rem;
+      border-left: 4px solid var(--amber-primary);
+    }
+    .about-review-card .review-stars { color: var(--amber-primary); font-size: 1rem; margin-bottom: .75rem; }
+    .about-review-card blockquote { font-size: .95rem; color: #444; line-height: 1.8; font-style: italic; margin-bottom: 1rem; }
+    .about-review-card cite { font-size: .85rem; color: var(--amber-deep); font-weight: 600; font-style: normal; }
+    .about-review-card .review-treatment { font-size: .8rem; color: #888; }
+
+    /* About CTA */
+    .about-cta {
+      background: linear-gradient(135deg, #1C1917 0%, #2a2017 100%);
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .about-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .about-cta p { color: rgba(255,255,255,.7); margin-bottom: 2rem; font-size: 1.05rem; }
+    .about-cta .btn-primary { background: var(--amber-primary); color: #fff; }
+    .about-cta .btn-primary:hover { background: var(--amber-deep); }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-hero .container,
+      .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-hero-image { order: -1; }
+      .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+      .specializations-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-reviews-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .credentials-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .specializations-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Amber Clinics — Home">
+        <img src="images/clinic-logo.png" alt="Amber Skin Clinics" style="height:144px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+        <span class="logo-text-fallback" style="display:none">Amber Clinics</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="skin-services.html">Skin Services</a></li>
+        <li><a href="hair-services.html">Hair Services</a></li>
+        <li><a href="laser-services.html">Laser Services</a></li>
+        <li><a href="anti-aging.html">Anti-Aging Services</a></li>
+        <li><a href="about-dr-shalini.html" class="active" aria-current="page">About Dr. Shalini</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="book-appointment.html" class="btn btn-primary btn-sm">Book Appointment</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="skin-services.html">Skin Services</a>
+      <a href="hair-services.html">Hair Services</a>
+      <a href="laser-services.html">Laser Services</a>
+      <a href="anti-aging.html">Anti-Aging Services</a>
+      <a href="about-dr-shalini.html" class="active">About Dr. Shalini</a>
+      <a href="book-appointment.html" class="btn btn-primary">Book Appointment</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="about-hero" aria-label="About Dr. Shalini hero">
+    <div class="container">
+      <div class="about-hero-text">
+        <span class="hero-tag">Senior Dermatologist &amp; Trichologist</span>
+        <h1>Meet Dr. Shalini<br><em>Patodiya</em></h1>
+        <p class="hero-sub">17+ years of expertise in dermatology, trichology, and cosmetic treatments — dedicated to personalized, root-cause care for every patient.</p>
+        <div class="about-badges" aria-label="Credentials">
+          <span class="about-badge">MD Dermatology</span>
+          <span class="about-badge">USFDA Certified</span>
+          <span class="about-badge">Trichology Specialist</span>
+          <span class="about-badge">Cosmetic Gynaecology</span>
+          <span class="about-badge">Women-Led Clinic</span>
+        </div>
+        <div class="about-socials" aria-label="Social media">
+          <a href="https://www.instagram.com/dr.shalini_patodiya/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@dr.shalinipatodiya" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100063707546197" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="about-hero-image">
+        <div class="doctor-organic-frame">
+          <img src="images/Shalini Image.png" alt="Dr. Shalini Patodiya — Senior Dermatologist at Amber Clinics" loading="eager" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CREDENTIALS STRIP ===== -->
+  <section class="credentials-strip" aria-label="Dr. Shalini credentials">
+    <div class="container">
+      <div class="credentials-grid">
+        <div class="credential-stat">
+          <div class="stat-number">17+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="credential-stat">
+          <div class="stat-number">700+</div>
+          <div class="stat-label">Patient Reviews</div>
+        </div>
+        <div class="credential-stat">
+          <div class="stat-number">USFDA</div>
+          <div class="stat-label">Certified Clinic</div>
+        </div>
+        <div class="credential-stat">
+          <div class="stat-number">MD</div>
+          <div class="stat-label">Dermatology</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HER PHILOSOPHY ===== -->
+  <section class="philosophy-section" aria-labelledby="philosophy-heading">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="philosophy-text">
+          <p class="section-tag" style="margin-bottom:.75rem">Her Approach</p>
+          <h2 id="philosophy-heading">Root-Cause Care, Not Quick Fixes</h2>
+          <p>Dr. Shalini Patodiya built Amber Clinics on one principle: every patient's skin deserves a diagnosis, not just a treatment. With 17+ years of practice, she combines clinical depth with cosmetic artistry to address the underlying cause of your concern — whether it's hormonal acne, genetic hair loss, or UV-accelerated aging.</p>
+          <p>Her background in trichology means hair and scalp conditions are treated with the same rigour as complex skin disorders. Her training in cosmetic gynaecology extends her practice to intimate skin health — an area often underserved in general dermatology.</p>
+          <p>Amber Clinics uses only USFDA-cleared devices and evidence-backed protocols calibrated for Indian skin tones — ensuring both safety and results that actually hold.</p>
+        </div>
+        <div class="philosophy-visual" aria-label="Care principles">
+          <div class="philosophy-point">
+            <div class="philosophy-point-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="philosophy-point-text">
+              <strong>Root-Cause Diagnosis</strong>
+              <span>Every consultation starts with understanding why, not just what — so treatments deliver lasting results.</span>
+            </div>
+          </div>
+          <div class="philosophy-point">
+            <div class="philosophy-point-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="philosophy-point-text">
+              <strong>Safe for Indian Skin</strong>
+              <span>All protocols are adapted for Fitzpatrick III–VI skin tones. No one-size-fits-all approach.</span>
+            </div>
+          </div>
+          <div class="philosophy-point">
+            <div class="philosophy-point-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            </div>
+            <div class="philosophy-point-text">
+              <strong>Personalized Treatment Plans</strong>
+              <span>Each patient receives a custom protocol — no off-the-shelf packages or unnecessary procedures.</span>
+            </div>
+          </div>
+          <div class="philosophy-point">
+            <div class="philosophy-point-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l3 3 9-9"/><path d="M20 6a2 2 0 11-4 0 2 2 0 014 0z"/><path d="M14 18a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+            <div class="philosophy-point-text">
+              <strong>USFDA-Certified Technology</strong>
+              <span>Only cleared, evidence-backed devices and products. Patient safety is always non-negotiable.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SPECIALIZATIONS ===== -->
+  <section class="specializations-section" aria-labelledby="spec-heading">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Expertise</p>
+        <h2 id="spec-heading">Areas of Specialization</h2>
+        <p class="section-sub">Broad clinical expertise across skin, hair, and cosmetic medicine</p>
+      </div>
+      <div class="specializations-grid">
+
+        <div class="spec-card fade-up">
+          <div class="spec-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 8c-1.5 0-3 .5-3 2s1.5 2 3 2 3 .5 3 2-1.5 2-3 2"/><path d="M12 6v2M12 16v2"/></svg>
+          </div>
+          <h3>Dermatology</h3>
+          <p>Acne, pigmentation, eczema, psoriasis, vitiligo, and all clinical skin conditions — diagnosed and treated at their root.</p>
+        </div>
+
+        <div class="spec-card fade-up">
+          <div class="spec-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 8c0 5 7 14 7 14s7-9 7-14c0-3-3-6-7-6z"/></svg>
+          </div>
+          <h3>Trichology</h3>
+          <p>Diagnosis and treatment of hair loss, scalp disorders, PRP therapy, and GFC — with clinical depth unique to a trained trichologist.</p>
+        </div>
+
+        <div class="spec-card fade-up">
+          <div class="spec-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.912 5.813a2 2 0 001.272 1.272L21 12l-5.816 1.916a2 2 0 00-1.272 1.272L12 21l-1.912-5.812a2 2 0 00-1.272-1.272L3 12l5.816-1.916a2 2 0 001.272-1.272L12 3z"/></svg>
+          </div>
+          <h3>Laser Treatments</h3>
+          <p>Triple Wavelength Diode, HIFU, Fractional CO2, Carbon Peel, Laser Toning — precision laser care for hair &amp; skin.</p>
+        </div>
+
+        <div class="spec-card fade-up">
+          <div class="spec-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          </div>
+          <h3>Anti-Aging</h3>
+          <p>Botox, dermal fillers, HydraFacial, thread lifts, and RF skin tightening — natural-looking rejuvenation with zero overdone results.</p>
+        </div>
+
+        <div class="spec-card fade-up">
+          <div class="spec-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2h5.34"/><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/></svg>
+          </div>
+          <h3>Cosmetic Procedures</h3>
+          <p>Lip augmentation, jawline contouring, non-surgical rhinoplasty, and under-eye fillers — subtle enhancements for natural balance.</p>
+        </div>
+
+        <div class="spec-card fade-up">
+          <div class="spec-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Cosmetic Gynaecology</h3>
+          <p>Intimate skin health and aesthetic care — an underserved area where Dr. Shalini's cross-specialty training makes a meaningful difference.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PATIENT REVIEWS ===== -->
+  <section class="about-reviews-section" aria-labelledby="about-reviews-heading">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Patient Stories</p>
+        <h2 id="about-reviews-heading">What Patients Say About Dr. Shalini</h2>
+        <p class="section-sub">Reviews from patients across hair, skin, laser, and anti-aging treatments</p>
+      </div>
+      <div class="about-reviews-grid">
+
+        <div class="about-review-card fade-up">
+          <div class="review-stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>"Dr. Shalini's diagnosis of my hair loss was the most thorough I've ever experienced. She understood the root cause within one consultation. After three PRP sessions, my hairline is visibly fuller."</blockquote>
+          <cite>— Saloni Patnaik</cite>
+          <span class="review-treatment">Hair Treatment</span>
+        </div>
+
+        <div class="about-review-card fade-up">
+          <div class="review-stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>"I visited for pigmentation that three other clinics had failed to treat. Dr. Shalini identified the trigger immediately and designed a protocol that finally worked. My skin tone is even for the first time in years."</blockquote>
+          <cite>— Sheetal Batra</cite>
+          <span class="review-treatment">Skin Lightening Treatment</span>
+        </div>
+
+        <div class="about-review-card fade-up">
+          <div class="review-stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>"I was skeptical about non-surgical anti-aging but Dr. Shalini's approach is so measured and natural. The results are visible without looking overdone — exactly what I asked for."</blockquote>
+          <cite>— Meenal Singh Ambala</cite>
+          <span class="review-treatment">Anti-Aging Treatment</span>
+        </div>
+
+        <div class="about-review-card fade-up">
+          <div class="review-stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>"The laser hair removal sessions were so comfortable and effective. Dr. Shalini's team is thorough, professional, and genuinely invested in patient comfort. Highly recommended."</blockquote>
+          <cite>— Aditi Krishnamurthy</cite>
+          <span class="review-treatment">Laser Hair Removal</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="about-cta" aria-label="Book a consultation with Dr. Shalini">
+    <div class="container">
+      <h2>Ready to consult Dr. Shalini?</h2>
+      <p>Book an appointment and receive a personalized diagnosis — not just a standard treatment plan.</p>
+      <a href="book-appointment.html" class="btn btn-primary" style="font-size:1rem;padding:.9rem 2.2rem">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/clinic-logo.png" alt="Amber Skin Clinics" style="height:90px;width:auto;display:block;margin:0 auto 12px;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+          <p class="logo-text-fallback footer-logo-fallback" style="display:none">Amber Clinics</p>
+          <p>Expert dermatology and aesthetic care by Dr. Shalini Patodiya. Trusted by 1300+ patients across Hyderabad.</p>
+          <div class="footer-socials" aria-label="Social media links">
+            <a href="https://www.instagram.com/dr.shalini_patodiya/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100063707546197" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-nav" aria-labelledby="footer-nav-about-label">
+          <h3 id="footer-nav-about-label">Our Services</h3>
+          <ul role="list">
+            <li><a href="skin-services.html">Skin Treatments</a></li>
+            <li><a href="hair-services.html">Hair Treatments</a></li>
+            <li><a href="laser-services.html">Laser Treatments</a></li>
+            <li><a href="anti-aging.html">Anti-Aging</a></li>
+            <li><a href="about-dr-shalini.html">About Dr. Shalini</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact" aria-labelledby="footer-contact-about-label">
+          <h3 id="footer-contact-about-label">Contact Us</h3>
+          <address>
+            <p>3rd Floor, SSP Castle, Nallagandla,<br>Telangana 500019</p>
+            <p><a href="tel:+916304250429">+91 63042 50429</a></p>
+            <p><a href="mailto:hello@amberskinclinics.com">hello@amberskinclinics.com</a></p>
+          </address>
+        </div>
+        <div class="footer-hours" aria-labelledby="footer-hours-about-label">
+          <h3 id="footer-hours-about-label">Clinic Hours</h3>
+          <dl>
+            <dt>Mon – Wed, Fri – Sun</dt>
+            <dd>11:00 AM – 8:00 PM</dd>
+            <dt>Thursday</dt>
+            <dd>Closed</dd>
+          </dl>
+          <a href="book-appointment.html" class="btn btn-primary btn-sm" style="margin-top:1rem">Book Appointment</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Amber Skin &amp; Hair Clinics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOAT ===== -->
+  <a href="https://wa.me/916304250429?text=Hi%2C%20I'd%20like%20to%20book%20an%20appointment" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger?.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      mobileMenu.classList.toggle('open', isOpen);
+    });
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Scroll fade-up animation
+    const fadeEls = document.querySelectorAll('.fade-up');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.08 });
+      fadeEls.forEach(el => io.observe(el));
+    } else {
+      fadeEls.forEach(el => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
