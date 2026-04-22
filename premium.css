@@ -360,10 +360,7 @@ button:focus-visible,
   }
 }
 
-/* === MQ1: Carousel prev/next arrows — hide on small phones, use dots only === */
-@media (max-width: 480px) {
-  .hero-carousel-prev, .hero-carousel-next { display: none; }
-}
+/* === MQ1: Carousel arrows — keep visible on small phones (shown above dots row) === */
 
 
 /* === MQ3 / M8: Gallery grid single column on small phones === */
@@ -1304,9 +1301,19 @@ button:focus-visible,
 
   /* Issues 2+4: hero height auto, one slide visible, dots in flow below content */
   #hero { height: auto; min-height: 0; }
-  .hero-slide.active { position: relative; inset: auto; width: 100%; }
+  .hero-slide.active { position: relative; inset: auto; width: 100%; min-height: 0; }
   .hero-slide:not(.active) { display: none; }
-  .hero-carousel-prev, .hero-carousel-next { display: none; }
+  /* Show arrows above the dots row on mobile */
+  .hero-carousel-prev, .hero-carousel-next {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    top: auto;
+    bottom: 52px;
+    transform: none;
+  }
+  .hero-carousel-prev { left: 20px; }
+  .hero-carousel-next { right: 20px; }
   .hero-carousel-dots {
     position: relative;
     left: auto;
@@ -1315,8 +1322,23 @@ button:focus-visible,
     display: flex;
     justify-content: center;
     padding: 16px 0 12px;
+    gap: 12px;
   }
-  .hero-dot { background: rgba(100,60,10,0.3); border-color: rgba(100,60,10,0.15); }
+  /* Larger touch targets for dots on mobile */
+  .hero-dot {
+    background: rgba(100,60,10,0.3);
+    border-color: rgba(100,60,10,0.15);
+    width: 10px;
+    height: 10px;
+  }
+  .hero-dot::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
   .hero-dot.active { background: var(--amber-primary); border-color: var(--amber-primary); }
 
   /* Issue 4: Slide 1 CTAs side by side */
