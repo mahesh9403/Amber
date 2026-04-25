@@ -696,6 +696,26 @@ stateDiagram-v2
 
 **Expected scores after re-deploy:** Desktop 90+, Mobile 93 (maintained)
 
+### Session 2 — Verified Final Scores (2026-04-25, 4:31 PM)
+
+| Metric | Baseline | After Session 2 |
+|--------|----------|----------------|
+| **Desktop Performance** | 97 | **96** ✅ |
+| **Mobile Performance** | 63 | **96** ✅ |
+| Desktop CLS | ~0.01 | **0.079** ✅ |
+| Mobile CLS | — | **0.001** ✅ |
+| Desktop FCP | — | **0.5s** ✅ |
+| Desktop LCP | — | **0.6s** ✅ |
+| Desktop TBT | — | **0ms** ✅ |
+| Desktop Speed Index | — | **1.7s** |
+| Mobile FCP | — | **1.4s** ✅ |
+| Mobile LCP | — | **2.3s** ✅ |
+| Mobile TBT | — | **0ms** ✅ |
+| Mobile Speed Index | — | **4.1s** |
+| Accessibility | — | **93** |
+| Best Practices | — | **100** |
+| SEO | — | **100** |
+
 **Remaining items (not yet fixed):**
 
 | Item | Type | Est. Impact |
@@ -718,4 +738,4 @@ stateDiagram-v2
 
 ---
 
-*Generated 2026-04-21 — Updated 2026-04-25 (self-hosted fonts, WebP patient images, minified CSS, performance sessions 1 + 2). Re-run this document review after adding new treatment pages or image assets.*
+*Generated 2026-04-21 — Updated 2026-04-25 (self-hosted fonts, WebP patient images, minified CSS, performance sessions 1 + 2, final scores: Desktop 96 / Mobile 96). Re-run this document review after adding new treatment pages or image assets.*
