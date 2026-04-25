@@ -71,8 +71,9 @@
   /* === MOBILE STICKY CTA BAR === */
   const mobileCta = document.getElementById('mobile-cta-bar');
   if (mobileCta && window.innerWidth <= 768) {
-    let heroH = document.getElementById('hero')?.offsetHeight || 600;
+    let heroH = null;
     window.addEventListener('scroll', () => {
+      if (heroH === null) heroH = document.getElementById('hero')?.offsetHeight || 600;
       mobileCta.classList.toggle('show', window.scrollY > heroH * 0.6);
     }, { passive: true });
   }
@@ -302,10 +303,11 @@
 
     let pct = 50;
     let dragging = false;
-    let cachedRect = slider.getBoundingClientRect();
-    window.addEventListener('resize', () => { cachedRect = slider.getBoundingClientRect(); }, { passive: true });
+    let cachedRect = null;
+    window.addEventListener('resize', () => { cachedRect = null; }, { passive: true });
 
     function setClip(x) {
+      if (!cachedRect) cachedRect = slider.getBoundingClientRect();
       pct = Math.max(5, Math.min(95, ((x - cachedRect.left) / cachedRect.width) * 100));
       afterWrap.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
       divider.style.left = pct + '%';

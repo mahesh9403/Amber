@@ -651,9 +651,10 @@ footer { background: var(--charcoal); color: rgba(255,255,255,0.7); padding: 80p
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.83rem; }
 
 /* === WHATSAPP FLOAT === */
-.whatsapp-float { position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px; background: var(--whatsapp); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,0.45); z-index: 100; transition: transform 0.3s; animation: pulse-wa 2.5s infinite; }
+.whatsapp-float { position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px; background: var(--whatsapp); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,0.45); z-index: 100; transition: transform 0.3s; will-change: transform; }
+.whatsapp-float::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: rgba(37,211,102,0.5); animation: pulse-wa 2.5s infinite; will-change: transform, opacity; }
 .whatsapp-float:hover { transform: scale(1.12); }
-@keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); } 70% { box-shadow: 0 0 0 14px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+@keyframes pulse-wa { 0% { transform: scale(1); opacity: 0.6; } 70% { transform: scale(1.8); opacity: 0; } 100% { transform: scale(1.8); opacity: 0; } }
 
 /* === BOOKING FORM === */
 .form-group { margin-bottom: 20px; }

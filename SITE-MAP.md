@@ -664,6 +664,49 @@ stateDiagram-v2
 
 ---
 
+## 8. Performance Optimization Log
+
+### Session 1 — 2026-04-25 (Pre-deployment)
+
+**Goals:** Improve PageSpeed Insights scores from Desktop 97 / Mobile 63.
+
+| Change | Files Modified | Details |
+|--------|---------------|---------|
+| Self-host Google Fonts | `style.css`, all HTML `<head>` | DM Sans + Playfair Display woff2 files in `fonts/`, removed Google CDN dependency |
+| Async CSS loading | All 7 HTML files | `premium.min.css` → `media="print" onload="this.media='all'"` to eliminate render-blocking |
+| Hero image preload | All HTML `<head>` | Per-page `<link rel="preload" as="image">` for hero LCP image |
+| Eager loading fixes | `index.html` + service pages | Mobile hero images `loading="lazy"` → `loading="eager"` with explicit `width`/`height` and `fetchpriority="high"` |
+| Navbar logo fix | All HTML files | `loading="eager"` + explicit `width="120" height="40"` |
+| Gzip + cache headers | `.htaccess` (new file) | 1-year cache for images, 1-month for CSS/JS, Gzip compression enabled |
+| Minified CSS | `style.min.css`, `premium.min.css` | Production minification of both CSS sources |
+
+**Post-deployment scores:** Desktop 69 ↓, Mobile 93 ↑
+
+### Session 2 — 2026-04-25 (Post-deployment fixes)
+
+**Root cause analysis:** Desktop crashed from 97 → 69 due to CLS 0.956. Mobile improved 63 → 93. Investigated and fixed.
+
+| Change | Files Modified | Root Cause / Fix |
+|--------|---------------|-----------------|
+| `premium.min.css` sync loading | All 7 HTML files | **CLS 0.956 fix** — `media="print"` async trick caused entire desktop layout to reflow when premium.css loaded post-paint. Reverted to synchronous `<link rel="stylesheet">`. Mobile was unaffected because its layout is simpler. |
+| Footer logo dimensions | All 7 HTML files | Added `width="120" height="40"` to footer `<img>` — was missing from all pages, causing unscored CLS contribution |
+| Lazy `offsetHeight` in `premium.js` | `premium.js` line 74 | Forced reflow fix — `hero.offsetHeight` was read eagerly on page load. Deferred to first scroll event with `let heroH = null` pattern |
+| Lazy `getBoundingClientRect` in `premium.js` | `premium.js` line 305 | Forced reflow fix — BA slider `cachedRect` was read at init after DOM writes (review card cloning). Now initialized as `null`, populated on first interaction. Reset to `null` on resize instead of re-reading immediately |
+| WhatsApp pulse animation composited | `style.css`, `style.min.css` | Fixes 18 non-composited animations — `pulse-wa` was animating `box-shadow` (not GPU-composited → triggers paint every frame). Replaced with `::before` pseudo-element animating `transform: scale()` + `opacity` (GPU-composited). Added `will-change: transform` to `.whatsapp-float` and `will-change: transform, opacity` to `::before` |
+
+**Expected scores after re-deploy:** Desktop 90+, Mobile 93 (maintained)
+
+**Remaining items (not yet fixed):**
+
+| Item | Type | Est. Impact |
+|------|------|-------------|
+| Enable Hostinger CDN | Server config (dashboard) | Eliminates 270ms render-blocking for `style.min.css` |
+| Add `sizes` attributes to hero slide images | Code | Reduces "Improve image delivery" 1,054 KiB penalty |
+| Compress hero images for desktop display size | Image processing | Reduces LCP image load time (currently 1,043ms) |
+| Minify `premium.js` | Build step | Minor — reduces JS parse time |
+
+---
+
 ## Known Issues / Review Notes
 
 | # | File | Issue | Severity |
@@ -675,4 +718,4 @@ stateDiagram-v2
 
 ---
 
-*Generated 2026-04-21 — Updated 2026-04-25 (self-hosted fonts, WebP patient images, minified CSS, performance fixes). Re-run this document review after adding new treatment pages or image assets.*
+*Generated 2026-04-21 — Updated 2026-04-25 (self-hosted fonts, WebP patient images, minified CSS, performance sessions 1 + 2). Re-run this document review after adding new treatment pages or image assets.*
