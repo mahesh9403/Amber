@@ -28,9 +28,25 @@ Website-V3/
 ├── about-dr-shalini.html               # Doctor biography page
 ├── book-appointment.html               # Booking & contact page
 │
-├── style.css                           # Main design system (4,500+ lines)
-├── premium.css                         # Micro-interactions & enhancements
+├── style.css                           # Main design system (source, includes @font-face)
+├── style.min.css                       # Minified — used by all pages in production
+├── premium.css                         # Micro-interactions & enhancements (source)
+├── premium.min.css                     # Minified — used by all pages in production
 ├── premium.js                          # Enhanced JS interactions
+│
+├── fonts/                              # Self-hosted Google Fonts (woff2)
+│   ├── rP2Hp2ywxg089UriCZOIHTWEBlw.woff2        # DM Sans normal latin
+│   ├── rP2Hp2ywxg089UriCZ2IHTWEBlwu8Q.woff2     # DM Sans normal latin-ext
+│   ├── rP2Wp2ywxg089UriCZaSExdy3sGt9zz86D3wyKy58UfivUw.woff2   # DM Sans italic latin
+│   ├── rP2Wp2ywxg089UriCZaSExdy3sGt9zz86D3wyKK58UfivUw4aw.woff2 # DM Sans italic latin-ext
+│   ├── nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2    # Playfair Display normal latin
+│   ├── nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgEM86xRbPQ.woff2 # Playfair Display normal latin-ext
+│   ├── nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgEM86xRbPQ.woff2 # Playfair Display normal cyrillic
+│   ├── nuFiD-vYSZviVYUb_rj3ij__anPXDTPYgEM86xRbPQ.woff2 # Playfair Display normal vietnamese
+│   ├── nuFkD-vYSZviVYUb_rj3ij__anPXDTnogkk7yRZrPA.woff2   # Playfair Display italic latin
+│   ├── nuFkD-vYSZviVYUb_rj3ij__anPXDTnojEk7yRZrPJ-M.woff2 # Playfair Display italic latin-ext
+│   ├── nuFkD-vYSZviVYUb_rj3ij__anPXDTnohkk7yRZrPJ-M.woff2 # Playfair Display italic cyrillic
+│   └── nuFkD-vYSZviVYUb_rj3ij__anPXDTnojUk7yRZrPJ-M.woff2 # Playfair Display italic vietnamese
 │
 ├── sitemap.xml                         # XML sitemap (7 URLs)
 ├── robots.txt                          # Crawler directives
@@ -41,13 +57,20 @@ Website-V3/
 │   ├── clinic-logo.webp                # Logo (modern format)
 │   ├── Shalini Image.webp              # Dr. Shalini profile photo
 │   └── patients/
-│       ├── afreen-shah.png
-│       ├── arjun-naik.jpg
-│       ├── elise-dsilva.png
-│       ├── esha-suyavanshi.jpg
-│       ├── manorama-dixit.jpg
-│       ├── meenal-singh-ambala.jpg
-│       └── shabnam-ansari.jpg
+│       ├── afreen-shah.png             # Original (kept as fallback)
+│       ├── afreen-shah.webp            # WebP (used in HTML)
+│       ├── arjun-naik.jpg              # Original AVIF-in-JPG (kept as fallback)
+│       ├── arjun-naik.webp             # WebP (used in HTML)
+│       ├── elise-dsilva.png            # Original (kept as fallback)
+│       ├── elise-dsilva.webp           # WebP (used in HTML)
+│       ├── esha-suyavanshi.jpg         # Original AVIF-in-JPG (kept as fallback)
+│       ├── esha-suyavanshi.webp        # WebP (used in HTML)
+│       ├── manorama-dixit.jpg          # Original (kept as fallback)
+│       ├── manorama-dixit.webp         # WebP (used in HTML)
+│       ├── meenal-singh-ambala.jpg     # Original AVIF-in-JPG (kept as fallback)
+│       ├── meenal-singh-ambala.webp    # WebP (used in HTML)
+│       ├── shabnam-ansari.jpg          # Original AVIF-in-JPG (kept as fallback)
+│       └── shabnam-ansari.webp         # WebP (used in HTML)
 │
 ├── gallery/
 │   └── anti-aging/
@@ -206,10 +229,10 @@ flowchart TD
 
     subgraph SHARED["Shared Assets (all pages)"]
         direction LR
-        CSS1["style.css"]
-        CSS2["premium.css"]
+        CSS1["style.min.css"]
+        CSS2["premium.min.css"]
         JS1["premium.js"]
-        FONTS["Google Fonts CDN\nPlayfair Display · DM Sans"]
+        FONTS["fonts/ (self-hosted woff2)\nPlayfair Display · DM Sans"]
     end
 
     subgraph FOOTER["Footer links (all pages → all pages)"]
@@ -347,25 +370,26 @@ graph LR
     end
 
     subgraph CDN["External CDN"]
-        GF["Google Fonts CDN\nPlayfair Display + DM Sans"]
         MAPS["Google Maps iframe\n(book-appointment.html only)"]
     end
 
-    P0 --> CSS1 & CSS2 & JS1 & GF & ISC
-    P1 --> CSS1 & CSS2 & JS1 & GF
-    P2 --> CSS1 & CSS2 & JS1 & GF
-    P3 --> CSS1 & CSS2 & JS1 & GF
-    P4 --> CSS1 & CSS2 & JS1 & GF
-    P5 --> CSS1 & CSS2 & JS1 & GF
-    P6 --> CSS1 & CSS2 & JS1 & GF & MAPS
+    P0 --> CSS1 & CSS2 & JS1 & ISC
+    P1 --> CSS1 & CSS2 & JS1
+    P2 --> CSS1 & CSS2 & JS1
+    P3 --> CSS1 & CSS2 & JS1
+    P4 --> CSS1 & CSS2 & JS1
+    P5 --> CSS1 & CSS2 & JS1
+    P6 --> CSS1 & CSS2 & JS1 & MAPS
 ```
 
 ### CSS File Responsibilities
 
 | File | Responsibility | Key Sections |
 |------|---------------|--------------|
-| `style.css` | Full design system | CSS variables, reset, typography, navbar, hero, ratings, stat bars, service cards, doctor section, why-amber, treatment cards, FAQ accordion, reviews carousel, gallery, footer, buttons |
-| `premium.css` | Micro-interactions & a11y | Skip link, WCAG contrast fixes, button shimmer, card hover glows, stagger fade-up animations, scroll-to-top button, lightbox modal, before/after slider, mobile tweaks |
+| `style.css` | Full design system (source) | @font-face declarations (self-hosted), CSS variables, reset, typography, navbar, hero, ratings, stat bars, service cards, doctor section, why-amber, treatment cards, FAQ accordion, reviews carousel, gallery, footer, buttons |
+| `style.min.css` | Minified production CSS | Same as above — all pages reference this file |
+| `premium.css` | Micro-interactions & a11y (source) | Skip link, WCAG contrast fixes, button shimmer, card hover glows, stagger fade-up animations, scroll-to-top button, lightbox modal, before/after slider, mobile tweaks |
+| `premium.min.css` | Minified production CSS | Same as above — all pages reference this file |
 
 ### JS File Responsibilities
 
@@ -385,13 +409,13 @@ graph LR
 | `clinic-logo.webp` | WebP | All pages (navbar + footer) | Primary logo |
 | `clinic-logo.png` | PNG | All pages (fallback `<picture>`) | Logo PNG fallback |
 | `Shalini Image.webp` | WebP | index.html, about-dr-shalini.html | Dr. Shalini profile photo |
-| `patients/afreen-shah.png` | PNG | Reviews sections | Patient testimonial avatar |
-| `patients/arjun-naik.jpg` | JPEG | Reviews sections | Patient testimonial avatar |
-| `patients/elise-dsilva.png` | PNG | Reviews sections | Patient testimonial avatar |
-| `patients/esha-suyavanshi.jpg` | JPEG | Reviews sections | Patient testimonial avatar |
-| `patients/manorama-dixit.jpg` | JPEG | Reviews sections | Patient testimonial avatar |
-| `patients/meenal-singh-ambala.jpg` | JPEG | Reviews sections | Patient testimonial avatar |
-| `patients/shabnam-ansari.jpg` | JPEG | Reviews sections | Patient testimonial avatar |
+| `patients/afreen-shah.webp` | WebP | Reviews sections | Patient testimonial avatar (converted from PNG) |
+| `patients/arjun-naik.webp` | WebP | Reviews sections | Patient testimonial avatar (converted from AVIF) |
+| `patients/elise-dsilva.webp` | WebP | Reviews sections | Patient testimonial avatar (converted from PNG) |
+| `patients/esha-suyavanshi.webp` | WebP | Reviews sections | Patient testimonial avatar (converted from AVIF) |
+| `patients/manorama-dixit.webp` | WebP | Reviews sections | Patient testimonial avatar (converted from JPEG) |
+| `patients/meenal-singh-ambala.webp` | WebP | Reviews sections | Patient testimonial avatar (converted from AVIF) |
+| `patients/shabnam-ansari.webp` | WebP | Reviews sections | Patient testimonial avatar (converted from AVIF) |
 
 ### 5b. gallery/ — Anti-Aging Treatment Results
 
@@ -647,8 +671,8 @@ stateDiagram-v2
 | 1 | `Hero Section/skin/Dark Circles & Eye Rejuvenation .webp` | Trailing space in filename — may cause broken `<img src>` on some servers | Medium |
 | 2 | `Hero Section/Laser/.../Laser Tatto Removal - Q-Switched Nd-YAG Laser.webp` | Typo: "Tatto" should be "Tattoo" — affects SEO-friendliness of filename | Low |
 | 3 | `gallery/` | Only `anti-aging/` subfolder exists — skin, hair, laser have no dedicated gallery folder | Medium |
-| 4 | `images/patients/` | Mix of `.png`, `.jpg` formats — consider converting all to `.webp` for consistency | Low |
+| ~~4~~ | ~~`images/patients/`~~ | ~~Mix of `.png`, `.jpg` formats~~ | ~~Resolved 2026-04-25 — all converted to WebP~~ |
 
 ---
 
-*Generated 2026-04-21 — Re-run this document review after adding new treatment pages or image assets.*
+*Generated 2026-04-21 — Updated 2026-04-25 (self-hosted fonts, WebP patient images, minified CSS, performance fixes). Re-run this document review after adding new treatment pages or image assets.*

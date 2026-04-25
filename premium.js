@@ -302,19 +302,20 @@
 
     let pct = 50;
     let dragging = false;
+    let cachedRect = slider.getBoundingClientRect();
+    window.addEventListener('resize', () => { cachedRect = slider.getBoundingClientRect(); }, { passive: true });
 
     function setClip(x) {
-      const rect = slider.getBoundingClientRect();
-      pct = Math.max(5, Math.min(95, ((x - rect.left) / rect.width) * 100));
+      pct = Math.max(5, Math.min(95, ((x - cachedRect.left) / cachedRect.width) * 100));
       afterWrap.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
       divider.style.left = pct + '%';
     }
 
-    slider.addEventListener('mousedown', (e) => { dragging = true; setClip(e.clientX); });
+    slider.addEventListener('mousedown', (e) => { cachedRect = slider.getBoundingClientRect(); dragging = true; setClip(e.clientX); });
     window.addEventListener('mousemove', (e) => { if (dragging) setClip(e.clientX); });
     window.addEventListener('mouseup', () => { dragging = false; });
 
-    slider.addEventListener('touchstart', (e) => { dragging = true; setClip(e.touches[0].clientX); }, { passive: true });
+    slider.addEventListener('touchstart', (e) => { cachedRect = slider.getBoundingClientRect(); dragging = true; setClip(e.touches[0].clientX); }, { passive: true });
     slider.addEventListener('touchmove', (e) => { if (dragging) setClip(e.touches[0].clientX); }, { passive: true });
     slider.addEventListener('touchend', () => { dragging = false; });
   });
